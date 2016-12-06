@@ -1,0 +1,45 @@
+<ion-content class="login">
+    <ion-card class="auth-content" style="width:device-width; min-height:100%;margin-top: 0; margin-bottom:0; padding-top:0;">
+
+        <!-- Logo -->
+        <div padding text-center>
+            <div class="logo primary-bg">
+                <i class="icon-sedan" light></i>
+            </div>
+            <h2 dark>Taxi Partage</h2>
+            <p dark>Application de partage de taxi</p>
+        </div>
+
+        <!-- Login form -->
+
+        <form #loginCredentials="ngForm">
+            <ion-list class="list-form" padding>
+                <ion-item>
+                    <ion-input name="username" id="username" type="text" placeholder="Courriel" [value]="emailUsernameValue" [(ngModel)]="emailUsernameValue"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-input name="password" id="password" type="password" placeholder="Mot de passe" [value]="passValue" [(ngModel)]="passValue"></ion-input>
+                </ion-item>
+            </ion-list>
+
+            <div padding>
+                <button primary block [disabled]="!loginCredentials.value.username || !loginCredentials.value.password" (click)="login()"> Se connecter
+</button>
+            </div>
+        </form>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row>
+            <ion-col width-30>
+                <button round ion-button small (click)="forgotMotDePasse()">Mot de passe oublié</button>
+            </ion-col>
+            <ion-col width-30 style="margin-right:30px">
+                <button round ion-button small (click)="signup()">Créer un compte</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

@@ -1,0 +1,36 @@
+<!--
+  Generated template for the RideShareRequestPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>Partage de course en cours</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content class="view-page">
+    <div id="mapSlide_1" style="width: 100%; height:90%"></div>
+    <ion-toolbar style="font-size:12px">
+        <ion-grid>
+            <ion-row>
+                <ion-col width-20><span style="font-size:20px">{{passagerToGo}} / {{passagerActuel}} <ion-icon name="people"></ion-icon></span></ion-col>
+                <ion-col width-30>
+                    <button ion-button small icon-left (click)="startRide()">
+                  <ion-icon name="car"></ion-icon>
+                  Demarrer Course
+                </button>
+                </ion-col>
+                <ion-col width-30>
+                    <button ion-button small icon-left (click)="cancelRide()">
+                        <ion-icon name="hand"></ion-icon>
+                  Annuler Course
+                </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-content>

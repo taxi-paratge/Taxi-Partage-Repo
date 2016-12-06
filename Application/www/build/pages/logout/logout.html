@@ -1,0 +1,122 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Taxi Partage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="logout">
+  <!-- Show map here -->
+  <div id="map" [ngStyle]="{height: mapHeight + 'px'}"></div>
+
+  <div class="modal-bg black-transparent" [hidden]="!showModalBg"></div>
+
+   <!--Choose pickup and drop off places-->
+  <ion-list class="map-overlay list-full-border">
+    <!--<ion-item (click)="choosePlace()">
+      <span class="label" secondary>PICK-UP</span>
+      <div class="bold">Hanoi university of technology</div>
+    </ion-item>
+    <ion-item (click)="choosePlace()">
+      <span class="label" secondary>DROP-OFF</span>
+      <div class="italic">Choose your drop-off</div>
+    </ion-item>
+    <label class="item item-input">
+      <span class="input-label">Départ</span>
+    </label> -->
+    <input (focus)="clearFrom()" id="journey_from" name="journey_from" type="text" placeholder="Entrer adresse de départ" [(ngModel)]="fromValue" style="width:100%">
+    <input (focus)="clearFrom()" id="journey_to" name="journey_to" type="text" placeholder="Entrer adresse de destination" [(ngModel)]="toValue" style="width:100%" >
+
+    <button round (click) = "logout()">testLogout</button>
+
+    <!--
+
+    <button round (click) = "writeUserData()">TestFire</button>
+    <button round (click) = "loadShareRideRequest()">TestLoadRide</button> -->
+    <!-- <button round (click) = "currentUser()">TestUser</button> -->
+
+  </ion-list>
+
+  <!-- Booking information -->
+  <div class="booking-info">
+     <button primary class="button-circle button-next" [hidden]="showForm" (click)="toggleForm()"><ion-icon name="car"></ion-icon></button>
+    <div padding [ngClass]="{'stable-bg': !showForm, 'light': showForm}"></div>
+
+  <!-- Vehicule type selection  <ion-grid no-padding [hidden]="showForm">
+      <ion-row class="vehicles" text-center>
+        <ion-col class="item-vehicle" *ngFor="let vehicle of vehicles; let i = index" [ngClass]="{'active': vehicle.active}"
+                 (click)="toggleVehicle(i)">
+          <i class="{{ vehicle.icon }}"></i>
+          <span>{{ vehicle.name }}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+    <ion-list class="booking-form stable-bg list-full-border padding-10" no-margin [hidden]="!showForm">
+
+<!--
+      <ion-item>
+        <ion-icon name="cash" item-left></ion-icon>
+        <div (click)="choosePaymentMethod()">
+          <div>Payment</div>
+          <span class="bold">Cash</span>
+        </div>
+        <ion-icon name="md-arrow-dropright" item-right></ion-icon>
+      </ion-item>
+    -->
+
+      <ion-item class="button-set">
+
+        <ion-grid>
+          <ion-row>
+<!--
+            <ion-col>
+              <button [ngClass]="{'active': false}" block padding id = "singleRideButton">Course Individuelle</button>
+            </ion-col>
+
+            <ion-col>
+              <button [ngClass]="{'active': true}" block (click)="shareRide()" id = "shareRideButton">Course Partagée</button>
+            </ion-col> -->
+              <ion-segment [(ngModel)]="courseType">
+                <ion-segment-button value="single">
+                  Course Individuelle
+                </ion-segment-button>
+                <ion-segment-button value="shared">
+                  Course Partagée
+                </ion-segment-button>
+              </ion-segment>
+
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+<!-- Promo et Notes
+      <ion-item (click)="showNotePopup()">
+        <ion-icon name="ios-create-outline" item-left></ion-icon>
+        <span class="italic" dark [hidden]="note">Notes to driver</span>
+        <span dark [hidden]="!note">{{ note }}</span>
+      </ion-item>
+
+      <ion-item (click)="showPromoPopup()">
+        <ion-icon name="pricetag" item-left></ion-icon>
+        <span class="italic" dark [hidden]="promo">Promo Code</span>
+        <span dark [hidden]="!promo">{{ promo }}</span>
+      </ion-item>
+      <button primary block (click)="book()">Commander</button>
+    -->
+      <button primary block (click)="commande()">Commander</button>
+      <button primary block (click)="Cancelbooking()">Annuler</button>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

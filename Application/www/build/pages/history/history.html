@@ -1,0 +1,22 @@
+
+<ion-header>
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Historique</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="history">
+  <ion-list class="list-full-border">
+    <ion-item *ngFor="let record of records">
+      <div (click)="recordClicked(record)">
+        <div class="bold" >{{ record.time }}</div>
+        <div>Départ: {{ record.from }}</div>
+        <div>Destination: {{ record.to }}</div>
+      </div>
+      <ion-icon name="ios-star-outline" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

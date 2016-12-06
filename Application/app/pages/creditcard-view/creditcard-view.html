@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Ajouter carte de crédit</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <div style="margin-top:70px;">
+        <ion-grid>
+            <ion-row>
+                <ion-item>
+                    <ion-input type="text" placeholder="Numéro de carte crédit" [value]="creditcardnumber" [(ngModel)]="creditcardnumber"></ion-input>
+                </ion-item>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <ion-input type="text" placeholder="MM/YY" [value]="monthyear" [(ngModel)]="monthyear"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <ion-input type="text" placeholder="CVV" [value]="cvv" [(ngModel)]="cvv"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <button primary block (click)="addCard()">
+                            Ajouter carte
+                        </button>
+            </ion-row>
+        </ion-grid>
+        <div padding>
+        </div>
+    </div>
+</ion-content>

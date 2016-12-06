@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Taxi Partage</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+    <!-- Show map here -->
+    <div id="map" [ngStyle]="{height: mapHeight + 'px'}"></div>
+
+    <div class="modal-bg black-transparent" [hidden]="!showModalBg"></div>
+
+    <!--Choose pickup and drop off places-->
+    <ion-list class="map-overlay list-full-border">
+        <input (focus)="clearFrom()" id="journey_from" name="journey_from" type="text" placeholder="Entrer adresse de départ" [(ngModel)]="fromValue" style="width:100%; height:30px; padding: 12px 20px;">
+        <input (focus)="clearFrom()" id="journey_to" name="journey_to" type="text" placeholder="Entrer adresse de destination" [(ngModel)]="toValue" style="width:100%; height:30px; padding: 12px 20px;">
+
+    </ion-list>
+
+    <!-- Booking information -->
+    <div class="booking-info">
+        <button primary class="button-circle button-next" [hidden]="showForm" (click)="toggleForm()"><ion-icon name="car"></ion-icon></button>
+        <div padding [ngClass]="{'stable-bg': !showForm, 'light': showForm}"></div>
+
+        <ion-list class="booking-form stable-bg list-full-border padding-10" no-margin [hidden]="!showForm">
+
+
+            <ion-item>
+                <ion-icon name={{paiementType.icon}} item-left></ion-icon>
+                <div (click)="choosePaymentMethod()">
+                    <div>Paiement</div>
+                    <span class="bold">{{paiementType.text}}</span>
+                </div>
+                <ion-icon name="md-arrow-dropright" item-right></ion-icon>
+            </ion-item>
+
+            <ion-item class="button-set">
+
+                <ion-grid>
+                    <ion-row>
+
+                        <ion-segment [(ngModel)]="courseType">
+                            <ion-segment-button value="single">
+                                Course Individuelle
+                            </ion-segment-button>
+                            <ion-segment-button value="shared">
+                                Course Partagée
+                            </ion-segment-button>
+                        </ion-segment>
+
+                    </ion-row>
+                </ion-grid>
+
+            </ion-item>
+            <button primary block (click)="commande()">Commander</button>
+            <button primary block (click)="Cancelbooking()">Annuler</button>
+
+        </ion-list>
+
+    </div>
+
+</ion-content>

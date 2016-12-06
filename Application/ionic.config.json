@@ -1,0 +1,11 @@
+{
+  "name": "taxi_partage",
+  "app_id": "f61ac62d",
+  "v2": true,
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:8100/"
+    }
+  ]
+}
